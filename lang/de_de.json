@@ -1,0 +1,20 @@
+{
+    "app.title": "LaunchPad",
+    "app.description": "Eigenes Init-System fuer TontooOS",
+    "list.header.name": "NAME",
+    "list.header.type": "TYP",
+    "list.header.state": "STATUS",
+    "list.header.pid": "PID",
+    "list.header.user": "BENUTZER",
+    "error.not_found": "Service '{}' nicht gefunden",
+    "error.already_running": "Laeuft bereits",
+    "error.not_running": "Laeuft nicht",
+    "error.cannot_deactivate": "System-Services koennen nicht deaktiviert werden",
+    "error.socket_connection": "Verbindung zum LaunchPad Daemon fehlgeschlagen",
+    "start.success": "Service '{}' gestartet",
+    "stop.success": "Service '{}' gestoppt",
+    "restart.success": "Service '{}' neugestartet",
+    "kill.success": "Service '{}' getoetet",
+    "activate.success": "Service '{}' aktiviert",
+    "deactivate.success": "Service '{}' deaktiviert"
+}

@@ -1,0 +1,7 @@
+name: pipewire-pulse
+execute: /usr/bin/pipewire-pulse
+type: sys
+user: root
+depends_on:
+  - pipewire
+restart: true

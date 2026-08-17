@@ -1,0 +1,13 @@
+[workspace]
+resolver = "2"
+members = [
+    "daemon",
+    "cli",
+    "lib",
+]
+
+[workspace.package]
+version = "26.1.0"
+edition = "2021"
+license = "TCL"
+repository = "https://github.com/TontooOS/LaunchPad"

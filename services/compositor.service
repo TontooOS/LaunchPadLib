@@ -1,0 +1,8 @@
+name: compositor
+execute: /usr/bin/tontoo-compositor
+type: sys
+user: root
+depends_on:
+  - seatd
+  - pipewire
+restart: true

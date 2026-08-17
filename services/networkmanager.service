@@ -1,0 +1,6 @@
+name: networkmanager
+execute: /usr/bin/NetworkManager
+type: sys
+user: root
+depends_on: []
+restart: true

@@ -1,0 +1,7 @@
+name: dock
+execute: /Library/System/bin/tontoo-dock
+type: sys
+user: root
+depends_on:
+  - compositor
+restart: true

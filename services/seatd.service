@@ -1,0 +1,6 @@
+name: seatd
+execute: /usr/bin/seatd
+type: sys
+user: root
+depends_on: []
+restart: true

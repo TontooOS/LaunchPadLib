@@ -1,0 +1,7 @@
+name: topbar
+execute: /Library/System/bin/tontoo-topbar
+type: sys
+user: root
+depends_on:
+  - compositor
+restart: true

@@ -1,0 +1,6 @@
+name: pipewire
+execute: /usr/bin/pipewire
+type: sys
+user: root
+depends_on: []
+restart: true
