@@ -11,7 +11,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-launchpad-lib = { path = "/Library/System/launchpad" }
+sdk = { path = "/Library/System/sdk", features = ["launchpad"] }
 ```
 
 ## License
