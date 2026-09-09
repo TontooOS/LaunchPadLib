@@ -1,7 +1,8 @@
 # ServiceConfig
 
 LaunchPad uses YAML files for service configuration. Each service has a
-`.service` file in `/Library/System/Launchpads/`.
+`.service` file in `/System/services/` (selectable via the daemon
+`--services-dir` flag; legacy default `/Library/System/Launchpads/`).
 
 ## Format
 
@@ -65,16 +66,15 @@ generates an ID like `1_low_terminal`, `2_low_terminal`, etc.
 All service files live in:
 
 ```
-/Library/System/Launchpads/
+/System/services/
 ├── seatd.service
 ├── networkmanager.service
 ├── pipewire.service
 ├── pipewire-pulse.service
 ├── wireplumber.service
 ├── compositor.service
-├── dock.service
-├── topbar.service
-└── ollama.service
+├── menubar.service
+└── FishPerms.service
 ```
 
 ## Hot Reload

@@ -7,7 +7,8 @@ socket IPC interface.
 ## Boot Sequence
 
 1. Mount essential filesystems (`/proc`, `/sys`, `/dev`)
-2. Scan `/Library/System/Launchpads/*.service` YAML files
+2. Scan `/System/services/*.service` YAML files (`--services-dir` boot arg,
+   default `/Library/System/Launchpads`)
 3. Resolve dependencies via topological sort
 4. Start all `sys` services in dependency order
 5. Start all `default` services
@@ -59,12 +60,13 @@ On shutdown signal:
 
 ## Configuration
 
-The daemon reads these environment variables:
+The daemon takes these CLI flags (kernel boot args for PID 1):
 
-| Variable | Default | Description |
+| Flag | Default | Description |
 |---|---|---|
-| `LAUNCHPAD_DIR` | `/Library/System/Launchpads` | Service YAML directory |
-| `LAUNCHPAD_LOG_DIR` | `/Library/System/Launchpads` | Log file directory |
+| `--services-dir` | `/Library/System/Launchpads` | Service YAML directory (TontooOS boots with `/System/services`) |
+| `--control-socket` | `/run/launchpad/control` | Path to the control socket |
+| `--log-dir` | `/var/log/launchpad` | Directory for service logs |
 
 ## Cross References
 
