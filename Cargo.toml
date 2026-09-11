@@ -7,7 +7,7 @@ description = "LaunchPad client library for TontooOS apps (Dock, Launcher, etc.)
 repository = "https://github.com/TontooOS/LaunchPad"
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["dylib"]
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
