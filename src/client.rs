@@ -25,8 +25,7 @@ impl LaunchpadClient {
         let mut stream = UnixStream::connect(&self.socket_path)
             .map_err(|e| format!("Cannot connect to LaunchPad daemon: {}", e))?;
 
-        let json =
-            serde_json::to_string(request).map_err(|e| format!("Serialize error: {}", e))?;
+        let json = request.to_json_string();
         stream
             .write_all(json.as_bytes())
             .map_err(|e| format!("Write error: {}", e))?;
@@ -39,7 +38,8 @@ impl LaunchpadClient {
             .read_to_string(&mut response)
             .map_err(|e| format!("Read error: {}", e))?;
 
-        serde_json::from_str(&response).map_err(|e| format!("Deserialize error: {}", e))
+        crate::types::IpcResponse::from_json_str(&response)
+            .map_err(|e| format!("Deserialize error: {}", e))
     }
 
     pub fn start(&self, service: &str) -> Result<IpcResponse, String> {

@@ -9,6 +9,8 @@ repository = "https://github.com/TontooOS/LaunchPad"
 [lib]
 crate-type = ["cdylib", "rlib"]
 
+# serde derive stays: the LaunchPad daemon parses ServiceConfig files with
+# serde_yaml, which needs these derives. Socket JSON uses Foundation.
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
+foundation = { path = "../Foundation" }

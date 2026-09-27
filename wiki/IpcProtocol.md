@@ -1,7 +1,11 @@
 # IpcProtocol
 
 LaunchPad uses a Unix socket at `/run/launchpad.sock` for IPC. The protocol
-is newline-delimited JSON.
+is newline-delimited JSON. Enum spellings are serde variant names
+(`Sys`, `Running`, …), preserved by the manual wire functions
+(`as_wire_str` / `from_wire_str`). Socket JSON is built and parsed with
+Foundation's helpers (no `serde_json` in the lib); `serde` derives stay
+because the daemon parses `ServiceConfig` files with `serde_yaml`.
 
 ## Connection
 
@@ -58,8 +62,8 @@ response, and closes the connection.
         "services": [
             {
                 "name": "compositor",
-                "service_type": "sys",
-                "state": "running",
+                "service_type": "Sys",
+                "state": "Running",
                 "pid": 480,
                 "user": "root"
             }
