@@ -4,7 +4,7 @@ Custom init system (PID 1) for TontooOS. Replaces systemd with a lightweight
 YAML-based service manager, Rust client library, and `launchctl` CLI.
 
 - Repository: https://github.com/TontooOS/LaunchPad
-- License: TCL v26.1
+- License: TCL v27.0
 - Version: 0.1.0
 
 ## Feature Index
