@@ -55,4 +55,5 @@ for the YAML format.
 
 ## Changelog
 
+- 2026-10-02: `serde` and `serde_yaml` removed. `ServiceConfig` is parsed by `from_yaml_str` / `from_file` on top of `foundation::yaml`, and rendered by `to_yaml_string`. The `type` field is now case-insensitive, which also fixes real `.service` files (they use `type: sys` while the old serde derive only accepted `Sys`). Foundation is the only dependency. See [ServiceConfig.md](ServiceConfig.md) and [IpcProtocol.md](IpcProtocol.md).
 - 2026-08-13: Initial wiki, created with LaunchPad implementation.

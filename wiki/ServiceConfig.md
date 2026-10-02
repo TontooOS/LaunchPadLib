@@ -23,10 +23,44 @@ restart: true
 |---|---|---|---|
 | `name` | string | yes | Unique service identifier |
 | `execute` | string | yes | Binary path and arguments |
-| `type` | enum | yes | `sys`, `default`, or `low` |
+| `type` | enum | yes | `sys`, `default`, or `low` (case-insensitive) |
 | `user` | string | yes | User to run as (`root`, `arlo`, etc.) |
 | `depends_on` | list | no | Services that must start first |
 | `restart` | bool | no | Auto-restart on crash (default: `true`) |
+
+## API
+
+Service files are read with Foundation's YAML reader. The library owns the
+parsing; the daemon only calls these:
+
+```rust
+impl ServiceConfig {
+    pub fn from_yaml_str(text: &str) -> Result<Self, String>
+    pub fn to_yaml_string(&self) -> String
+    pub fn from_file(path: &Path) -> Result<Self, String>
+}
+
+impl ServiceType {
+    pub fn from_config_str(s: &str) -> Option<Self>   // case-insensitive
+    pub fn as_config_str(&self) -> &'static str      // "sys" | "default" | "low"
+    pub fn as_wire_str(&self) -> &'static str        // "Sys" | "Default" | "Low"
+    pub fn from_wire_str(s: &str) -> Option<Self>    // socket protocol
+}
+```
+
+Behavior:
+
+- `name`, `execute`, `type` and `user` are required; a missing field, an
+  empty `name` or an empty `execute` returns `Err`.
+- `type` is matched case-insensitively, so both `sys` and `Sys` load. Only
+  `ServiceType::from_wire_str` is case-sensitive, because the socket
+  protocol fixes the spelling.
+- `depends_on` defaults to an empty list and must be a list of strings.
+- `restart` defaults to `true`; the strings `true` / `yes` / `1` and
+  `false` / `no` / `0` are also accepted.
+- A file holding more than one `---` document returns `Err`; an empty file
+  or a file with only comments returns `Err("Service file is empty")`.
+- `to_yaml_string` round-trips through `from_yaml_str`.
 
 ## Service Types
 
